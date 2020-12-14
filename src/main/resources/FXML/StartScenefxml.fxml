@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: pink; -fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyController" fx:id = "root">
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <padding>
+      <Insets bottom="70.0" left="70.0" right="70.0" top="70.0" />
+   </padding>
+   <center>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="400.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" style="-fx-pref-width: 300; -fx-pref-height: 300;" text="Sever" textFill="#a80c0c" onAction = "#severMethod" />
+            <Button mnemonicParsing="false" style="-fx-pref-height: 300; -fx-pref-width: 300;" text="Client" textFill="#b53131" onAction = "#clientMethod" />
+         </children>
+      </HBox>
+   </center>
+</BorderPane>
