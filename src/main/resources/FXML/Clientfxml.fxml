@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="10.0" style="-fx-background-color: blue;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientController">
+   <children>
+      <MenuBar>
+        <menus>
+            <Menu mnemonicParsing="false" text="Help">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Instruction" onAction = "#instructionMethod" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <TextField fx:id="c1" prefHeight="23.0" prefWidth="600.0" />
+      <Button fx:id="b1" mnemonicParsing="false" onAction="#sendMethod" text="Send" />
+      <ListView fx:id="listItems2" prefHeight="200.0" prefWidth="200.0" />
+      <ListView fx:id="clientLists" prefHeight="200.0" prefWidth="200.0" />
+   </children>
+</VBox>
