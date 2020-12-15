@@ -10,11 +10,12 @@ import java.util.function.Consumer;
 
 public class Server{
 
-	int count = 1;
-	ArrayList<ClientThread> clients = new ArrayList<ClientThread>();
-	TheServer server;
+	private int count = 1;
+	private ArrayList<ClientThread> clients = new ArrayList<ClientThread>();
+	private TheServer server;
 	private Consumer<Serializable> callback;
-	ArrayList<Integer> clientLists = new ArrayList<>();
+	private ArrayList<Integer> clientLists = new ArrayList<>();
+	private ArrayList<Integer> numClients = new ArrayList<>();
 	
 	ClientInfo clientInfo;
 	
@@ -23,6 +24,12 @@ public class Server{
 		callback = call;
 		server = new TheServer();
 		server.start();
+	}
+	
+	//Overwriting constructor.
+	Server()
+	{
+		
 	}
 	
 	
@@ -142,9 +149,9 @@ public class Server{
 		
 							String str = clientTemp2.getMessage();
 		
-							String[] splitStr = str.split("\\s+");
+							String[] splitStr = messageProcess(clientTemp2.getMessage());
 		
-							ArrayList<Integer> numClients = new ArrayList<>();
+							
 		
 							if (splitStr[0].contains("/pm")) {
 		
@@ -224,6 +231,12 @@ public class Server{
 			
 			
 		}//end of client thread
+		
+		
+		public String[] messageProcess(String str)
+		{
+			return str.split("\\s+");
+		}
 }
 
 
