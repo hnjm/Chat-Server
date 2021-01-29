@@ -1,3 +1,3 @@
-# ChatSeverJavaGUI
+# ChatServerJavaGUI
 
 # Maven
