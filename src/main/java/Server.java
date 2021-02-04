@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.function.Consumer;
 
 
@@ -17,6 +18,9 @@ public class Server{
 	private ArrayList<Integer> clientLists = new ArrayList<>();
 	private ArrayList<Integer> numClients = new ArrayList<>();
 	
+	private HashMap<ClientThread, Integer> pClientLists;
+	
+	
 	ClientInfo clientInfo;
 	
 	Server(Consumer<Serializable> call){
@@ -29,7 +33,8 @@ public class Server{
 	//Overwriting constructor.
 	Server()
 	{
-		
+		//instansiate
+		pClientLists = new HashMap<>();
 	}
 	
 	
@@ -50,8 +55,16 @@ public class Server{
 						
 						clientLists.add(count);
 						
+			
+					
+						
 						callback.accept("client has connected to server: " + "client #" + count);
+						
 						clients.add(c);
+						
+						//TODO: hashing the the clientThread with self-indetify numbers;
+						pClientLists.put(c, count);
+						
 						c.start();
 						
 						count++;
@@ -147,12 +160,11 @@ public class Server{
 		
 							callback.accept("client: " + count + " sent: " + clientTemp2.getMessage());
 		
-							String str = clientTemp2.getMessage();
+							String str = clientTemp2.getMessage(); //get the message after reading from the input sockets
 		
 							String[] splitStr = messageProcess(clientTemp2.getMessage());
-		
 							
-		
+							//Starts deciphering the messages to get the acutal content
 							if (splitStr[0].contains("/pm")) {
 		
 								if (splitStr[1].contains(",")) {
@@ -174,6 +186,7 @@ public class Server{
 											clients.get(temp);
 		
 											numClients.add(temp);
+											
 										} catch (IndexOutOfBoundsException e) {
 											callback.accept("Server clients# " + (temp + 1) + " does not exists");
 											continue;
